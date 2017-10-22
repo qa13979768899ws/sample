@@ -31,24 +31,24 @@ class UsersController extends Controller
         return view('users.show', compact('user'));
     }
 
-    public function store(Request $request)
-    {
-        $this->validate($request, [
-            'name' => 'required|max:50',
-            'email' => 'required|email|unique:users|max:255',
-            'password' => 'required|confirmed|min:6'
-        ]);
+//     public function store(Request $request)
+//     {
+//         $this->validate($request, [
+//             'name' => 'required|max:50',
+//             'email' => 'required|email|unique:users|max:255',
+//             'password' => 'required|confirmed|min:6'
+//         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-        ]);
+//         $user = User::create([
+//             'name' => $request->name,
+//             'email' => $request->email,
+//             'password' => bcrypt($request->password),
+//         ]);
 
-        $this->sendEmailConfirmationTo($user);
-        session()->flash('success', '验证邮件已发送到你的注册邮箱上，请注意查收。');
-        return redirect('www.baidu.com');
-    }
+//         $this->sendEmailConfirmationTo($user);
+//         session()->flash('success', '验证邮件已发送到你的注册邮箱上，请注意查收。');
+//         return redirect('www.baidu.com');
+//     }
 
     public function index()
     {
